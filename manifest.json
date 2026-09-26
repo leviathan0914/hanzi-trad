@@ -1,0 +1,18 @@
+{
+  "name": "古籍漢字辭典",
+  "short_name": "漢字辭典",
+  "description": "二十四史古籍汉字学习工具",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f2ea",
+  "theme_color": "#2b2b2b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
