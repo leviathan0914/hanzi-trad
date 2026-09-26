@@ -35,7 +35,7 @@ function switchToView(name) {
 // ============ 加载字库 ============
 async function init() {
   try {
-    const res = await fetch('/data/build/chars.json');
+    const res = await fetch('chars.json');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     CHARS = await res.json();
     ORDERED = Object.entries(CHARS)
@@ -59,7 +59,7 @@ async function init() {
 async function loadDefinitions() {
   if (DEFINITIONS) return DEFINITIONS;
   if (definitionsPromise) return definitionsPromise;
-  definitionsPromise = fetch('/data/build/definitions.json')
+  definitionsPromise = fetch('definitions.json')
     .then(r => r.ok ? r.json() : {})
     .then(d => { DEFINITIONS = d; return d; })
     .catch(() => { DEFINITIONS = {}; return {}; });
@@ -323,7 +323,7 @@ const STROKE_PACKS = {};
 
 async function loadStrokePack(bucket) {
   if (STROKE_PACKS[bucket]) return STROKE_PACKS[bucket];
-  const res = await fetch(`/data/build/strokes-pack/${bucket}.json`);
+  const res = await fetch(`strokes-pack/${bucket}.json`);
   if (!res.ok) throw new Error('笔顺包加载失败');
   const data = await res.json();
   STROKE_PACKS[bucket] = data;
@@ -419,7 +419,7 @@ if (btnShowWelcome) {
 }
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').catch(() => {});
+  navigator.serviceWorker.register('sw.js').catch(() => {});
 }
 
 init();
