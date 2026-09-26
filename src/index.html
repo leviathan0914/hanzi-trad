@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2b2b2b">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
+  <title>古籍漢字辭典</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="welcome-mode">
+
+  <header class="topbar">
+    <h1>古籍漢字辭典</h1>
+    <nav class="tabs">
+      <button class="tab" data-view="dict">字典</button>
+      <button class="tab" data-view="rules">規律</button>
+      <button class="tab" data-view="practice">練習</button>
+      <button class="tab" data-view="stats">進度</button>
+    </nav>
+  </header>
+
+  <!-- 欢迎/规律初始页 -->
+  <main class="view active" id="view-welcome">
+    <div class="welcome-container">
+      <div class="welcome-head">
+        <h1>簡繁轉化 · 六大規律</h1>
+        <p class="welcome-sub">先過一遍規律，然後開始使用。看完點底部按鈕即可收起。</p>
+      </div>
+      <div id="welcome-rules" class="rules-container"></div>
+      <div class="welcome-foot">
+        <button id="btn-collapse-welcome" class="primary-btn">收起規律，開始使用</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 字典视图 -->
+  <main class="view" id="view-dict">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="search-box">
+          <input id="search" type="text" placeholder="搜索汉字、拼音…" autocomplete="off">
+        </div>
+        <div class="filter-box">
+          <button class="filter-btn active" data-filter="all">全部</button>
+          <button class="filter-btn" data-filter="variant">有異體</button>
+          <button class="filter-btn" data-filter="strokes">有筆順</button>
+        </div>
+        <div id="char-list" class="char-list"></div>
+        <div id="list-stat" class="list-stat"></div>
+      </aside>
+      <section id="detail" class="detail">
+        <div class="placeholder">从左侧选一个字，或直接搜索</div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 规律视图（tab） -->
+  <main class="view" id="view-rules">
+    <div class="rules-container" id="rules-content"></div>
+  </main>
+
+  <!-- 练习视图 -->
+  <main class="view" id="view-practice">
+    <div class="practice-container">
+      <div id="practice-start">
+        <h2>練習</h2>
+        <p class="practice-desc">看简体 + 拼音 + 释义 → 写出对应的繁体字</p>
+        <div id="practice-stats-brief" class="practice-brief"></div>
+        <button id="btn-start-practice" class="primary-btn">開始今日練習</button>
+        <div class="practice-options">
+          <label>
+            每次新字数量：
+            <select id="new-count">
+              <option value="5">5</option>
+              <option value="10" selected>10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div id="practice-session" style="display:none">
+        <div class="practice-progress">
+          <span id="progress-text">1 / 10</span>
+          <button id="btn-quit" class="quit-btn">退出</button>
+        </div>
+        <div class="practice-card">
+          <div class="prompt-char" id="prompt-char">发</div>
+          <div class="prompt-meta">
+            <div class="prompt-pinyin" id="prompt-pinyin"></div>
+            <div class="prompt-def" id="prompt-def"></div>
+          </div>
+        </div>
+        <div class="practice-canvas" id="practice-canvas" style="display:none">
+          <div class="answer-trad" id="answer-trad"></div>
+        </div>
+        <div class="practice-actions">
+          <button id="btn-show-answer" class="primary-btn">顯示答案</button>
+        </div>
+        <div id="practice-rating" style="display:none" class="rating-row">
+          <span class="rating-label">自我評價：</span>
+          <button class="rate-btn rate-no" data-q="0">不會</button>
+          <button class="rate-btn rate-fuzzy" data-q="3">模糊</button>
+          <button class="rate-btn rate-yes" data-q="5">會</button>
+        </div>
+        <div class="practice-hint" id="practice-hint"></div>
+      </div>
+
+      <div id="practice-summary" style="display:none">
+        <h2>練習完成</h2>
+        <div id="summary-content"></div>
+        <button id="btn-back-home" class="primary-btn">返回</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 进度视图 -->
+  <main class="view" id="view-stats">
+    <div class="stats-container">
+      <h2>學習進度</h2>
+      <div id="stats-content"></div>
+      <button id="btn-reset-stats" class="danger-btn">重置所有进度</button>
+      <button id="btn-show-welcome" class="danger-btn" style="border-color:var(--ink-3);color:var(--ink-3);">重新顯示規律頁</button>
+    </div>
+  </main>
+
+  <script src="/src/lib/hanzi-writer.min.js"></script>
+  <script src="/src/app.js"></script>
+  <script src="/src/rules.js"></script>
+  <script src="/src/practice.js"></script>
+</body>
+</html>
