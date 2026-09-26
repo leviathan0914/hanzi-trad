@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2b2b2b">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
   <title>古籍漢字辭典</title>
-  <link rel="stylesheet" href="/src/style.css">
+  <link rel="stylesheet" href="src/style.css">
 </head>
 <body class="welcome-mode">
 
@@ -21,7 +21,6 @@
     </nav>
   </header>
 
-  <!-- 欢迎/规律初始页 -->
   <main class="view active" id="view-welcome">
     <div class="welcome-container">
       <div class="welcome-head">
@@ -35,7 +34,6 @@
     </div>
   </main>
 
-  <!-- 字典视图 -->
   <main class="view" id="view-dict">
     <div class="layout">
       <aside class="sidebar">
@@ -56,12 +54,10 @@
     </div>
   </main>
 
-  <!-- 规律视图（tab） -->
   <main class="view" id="view-rules">
     <div class="rules-container" id="rules-content"></div>
   </main>
 
-  <!-- 练习视图 -->
   <main class="view" id="view-practice">
     <div class="practice-container">
       <div id="practice-start">
@@ -117,7 +113,6 @@
     </div>
   </main>
 
-  <!-- 进度视图 -->
   <main class="view" id="view-stats">
     <div class="stats-container">
       <h2>學習進度</h2>
@@ -127,9 +122,9 @@
     </div>
   </main>
 
-  <script src="/src/lib/hanzi-writer.min.js"></script>
-  <script src="/src/app.js"></script>
-  <script src="/src/rules.js"></script>
-  <script src="/src/practice.js"></script>
+  <script src="src/lib/hanzi-writer.min.js"></script>
+  <script src="src/app.js"></script>
+  <script src="src/rules.js"></script>
+  <script src="src/practice.js"></script>
 </body>
 </html>
