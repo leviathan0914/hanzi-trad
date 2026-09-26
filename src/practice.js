@@ -43,7 +43,7 @@ const PRACTICE_STROKE_PACKS = {};
 
 async function loadStrokePackPractice(bucket) {
   if (PRACTICE_STROKE_PACKS[bucket]) return PRACTICE_STROKE_PACKS[bucket];
-  const res = await fetch(`/data/build/strokes-pack/${bucket}.json`);
+  const res = await fetch(`strokes-pack/${bucket}.json`);
   if (!res.ok) throw new Error('笔顺包加载失败');
   const data = await res.json();
   PRACTICE_STROKE_PACKS[bucket] = data;
